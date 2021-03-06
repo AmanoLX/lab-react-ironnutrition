@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
 import './App.scss';
+import AddNewMeal from './components/AddNewMeal';
 import MealBox from './components/MealBox';
 import meals from './meals.json';
 
 class App extends Component {
 	state = {
 		meals,
-		name: '',
-		calories: '',
-		image: '',
-		quantity: '',
-		key: Math.random().toString(),
 	};
 
 	render() {
-		// const { name, calories, image, quantity } = this.state.meal;
 		return (
 			<main>
-				<section>
+				<section className='container'>
+					<AddNewMeal />
 					{meals.map(meal => (
 						<MealBox
-							key={meal.key}
+							key={Math.random().toString()}
+							// {...meal} possibility but not clear
 							name={meal.name}
 							calories={meal.calories}
 							image={meal.image}
