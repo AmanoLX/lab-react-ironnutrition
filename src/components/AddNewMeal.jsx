@@ -7,6 +7,7 @@ class AddNewMeal extends Component {
 		name: '',
 		calories: '',
 		image: '',
+		quantity: 0,
 	};
 
 	handleInput = e => {

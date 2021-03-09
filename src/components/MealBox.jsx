@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import Media from 'react-bootstrap/Media';
 
 class MealBox extends Component {
 	render() {
 		const { image, name, calories, quantity } = this.props;
 		return (
-			<div className='media'>
+			<Media style={{ justifyContent: 'space-between' }}>
 				<img
 					src={image}
 					alt='item'
@@ -23,7 +24,7 @@ class MealBox extends Component {
 					/>
 					<button className='btn btn-primary col-3'>+</button>
 				</form>
-			</div>
+			</Media>
 		);
 	}
 }

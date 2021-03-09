@@ -8,10 +8,11 @@ class Search extends Component {
 	};
 
 	handleInput = e => {
-		const { name, value } = e.target;
+		const { value, name } = e.target;
 		this.setState({
 			[name]: value,
 		});
+		this.props.filteredMeals(this.state.search);
 	};
 
 	render() {
