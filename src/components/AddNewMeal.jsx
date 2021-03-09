@@ -7,10 +7,11 @@ class AddNewMeal extends Component {
 		name: '',
 		calories: '',
 		image: '',
+		quantity: 0,
 	};
 
 	handleInput = e => {
-		let { name, value } = e.target;
+		const { name, value } = e.target;
 		this.setState({
 			[name]: value,
 		});
@@ -19,13 +20,14 @@ class AddNewMeal extends Component {
 	handleSubmission = e => {
 		e.preventDefault();
 		const addNewMeal = this.state;
-		this.props.onAddNewMeal(addNewMeal);
-		// close and clear the form
-		this.setState({
-			name: '',
-			calories: '',
-			image: '',
-		});
+		if (addNewMeal.calories && addNewMeal.name && addNewMeal.image) {
+			this.props.onAddNewMeal(addNewMeal);
+			this.setState({
+				name: '',
+				calories: '',
+				image: '',
+			});
+		}
 	};
 
 	render() {

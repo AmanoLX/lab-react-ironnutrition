@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 
 class App extends Component {
 	state = {
-		meals,
+		meals: meals,
 		active: false,
 	};
 
@@ -20,8 +20,8 @@ class App extends Component {
 	addNewMeal = meal => {
 		this.setState({
 			meals: [meal, ...this.state.meals],
+			active: !this.state.active,
 		});
-		this.toggleForm();
 	};
 
 	render() {
@@ -38,7 +38,7 @@ class App extends Component {
 					</Button>
 					{this.state.active && <AddNewMeal onAddNewMeal={this.addNewMeal} />}
 
-					{meals.map(meal => (
+					{this.state.meals.map(meal => (
 						<MealBox
 							key={Math.random().toString()}
 							// {...meal} possibility but not clear
