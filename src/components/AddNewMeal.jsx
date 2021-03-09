@@ -7,7 +7,6 @@ class AddNewMeal extends Component {
 		name: '',
 		calories: '',
 		image: '',
-		quantity: 0,
 	};
 
 	handleInput = e => {
@@ -34,7 +33,7 @@ class AddNewMeal extends Component {
 		const { name, calories, image } = this.state;
 		return (
 			<div>
-				<Form onSubmit={this.handleSubmission} className='mb-5'>
+				<Form onSubmit={this.handleSubmission} className='mb-3'>
 					{/* Name Input */}
 					<Form.Group>
 						<Form.Label>Name</Form.Label>
@@ -68,7 +67,7 @@ class AddNewMeal extends Component {
 							value={image}
 						/>
 					</Form.Group>
-					<Button variant='primary' type='submit' block>
+					<Button variant='outline-primary' type='submit' block>
 						Submit
 					</Button>
 				</Form>

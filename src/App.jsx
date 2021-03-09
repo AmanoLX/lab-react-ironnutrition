@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import './App.scss';
 import AddNewMeal from './components/AddNewMeal';
 import MealBox from './components/MealBox';
-import meals from './meals.json';
+import Search from './components/Search';
 import Button from 'react-bootstrap/Button';
+
+import meals from './meals.json';
 
 class App extends Component {
 	state = {
-		meals: meals,
+		meals,
 		active: false,
 	};
 
@@ -24,6 +26,13 @@ class App extends Component {
 		});
 	};
 
+	filteredMeals = searchMeal => {
+		const filteredMeals = this.state.meals.filter(meal =>
+			meal.name.toLowerCase().includes(searchMeal.toLowerCase())
+		);
+		this.setState({ meals: filteredMeals });
+	};
+
 	render() {
 		return (
 			<main>
@@ -37,6 +46,8 @@ class App extends Component {
 						Add New Meal
 					</Button>
 					{this.state.active && <AddNewMeal onAddNewMeal={this.addNewMeal} />}
+
+					<Search filteredMeals={this.filteredMeals} />
 
 					{this.state.meals.map(meal => (
 						<MealBox
